@@ -15,7 +15,7 @@ heading_style.font.size = Pt(24)
 # Change the normal text style
 style = doc.styles['Normal']
 style.font.name = 'Roboto'
-style.font.size = Pt(12)
+style.font.size = Pt(10)
 
 
 # Fetch table of contents

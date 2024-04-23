@@ -45,13 +45,10 @@ styles['Normal'].fontSize = 12
 styles['Normal'].leading = 14
 styles['Normal'].spaceAfter = 8
 
-# styles.add(ParagraphStyle(name='Italic', fontName='Garamond-Italic', fontSize=12, leading=14, spaceAfter=12))
-
 styles['Italic'].fontName = 'Garamond-Italic'
 styles['Italic'].fontSize = 12
 styles['Italic'].leading = 14
 styles['Italic'].spaceAfter = 8
-
 
 # Custom function to add page numbers
 def add_page_number(canvas, doc):
@@ -93,13 +90,16 @@ for url in links:
                     elif child.name in ['i', 'em']:
                         # Add italicized text for content within <i> tags
                         paragraph_text += f"<i>{child.get_text().replace('&', '&')}</i>"
-        
-        # Apply the appropriate style based on paragraph position
-        if i == 0:
-            story.append(Paragraph(paragraph_text, styles['FirstParagraph']))
+
+        # Apply the appropriate style to the paragraph
+        if url != "https://practicalguidetoevil.wordpress.com/2015/03/25/prologue/":
+            if i == 0:
+                story.append(Paragraph(paragraph_text, styles['FirstParagraph']))
+            else:
+                story.append(Paragraph(paragraph_text, styles['Normal']))
         else:
             story.append(Paragraph(paragraph_text, styles['Normal']))
-        
+
         story.append(Spacer(1, 12))
 
     story.append(PageBreak())  # Add a new page after each chapter
