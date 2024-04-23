@@ -6,8 +6,17 @@ from docx.shared import Pt
 # Initialize and configure the Word document
 doc = Document()
 styles = doc.styles
+
+# Change heading style
 heading_style = styles['Heading 1']
-heading_style.font.size = Pt(28)
+heading_style.font.name = 'Roboto'
+heading_style.font.size = Pt(24)
+
+# Change the normal text style
+style = doc.styles['Normal']
+style.font.name = 'Roboto'
+style.font.size = Pt(12)
+
 
 # Fetch table of contents
 url = 'https://practicalguidetoevil.wordpress.com/table-of-contents/'
@@ -26,8 +35,6 @@ else:
     print("Book 1 section not found.")
 
 # Scrape chapters
-
-link = ["https://practicalguidetoevil.wordpress.com/2015/03/25/prologue/"]
 for url in links:
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
